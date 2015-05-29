@@ -12,7 +12,7 @@ if (isset($_GET['cmd']) === true) {
   if ($_GET['cmd'] == 'set') {
     $client = new Predis\Client([
       'scheme' => 'tcp',
-      'host'   => 'redis-master',
+      'host'   => getenv('REDIS_MASTER_PORT_6379_TCP_ADDR'),
       'port'   => 6379,
     ]);
     
@@ -21,7 +21,7 @@ if (isset($_GET['cmd']) === true) {
   } else {
     $client = new Predis\Client([
       'scheme' => 'tcp',
-      'host'   => 'redis-slave',
+      'host'   => getenv('REDIS_SLAVE_PORT_6379_TCP_ADDR'),
       'port'   => 6379,
     ]);
 
